@@ -1,3 +1,19 @@
-<p>
-  shopping works!
-</p>
+<div class="row">
+  <div class="col-2">
+    <!-- <div style="overflow-y: scroll; overflow-x: hidden; height: 400px;"> -->
+      <ul class="list-group">
+        <li *ngFor="let category of categories" class="list-group-item">
+          <a class="collapsed" data-toggle="collapse" href="#{{category.category.split(' ').join('')}}"> {{category.category}}</a>
+          <ul id="{{category.category.split(' ').join('')}}" class="panel-collapse collapse ">
+            <li  *ngFor="let subcategory of category.subcategories">
+              <a href="">{{subcategory.name}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    <!-- </div> -->
+  </div>
+  <div class="col-10">
+
+  </div>
+</div>

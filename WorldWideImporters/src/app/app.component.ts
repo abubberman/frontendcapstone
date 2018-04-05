@@ -1,4 +1,7 @@
+import { CategoriesService } from './categories.service';
 import { Component } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(private categoriesService: CategoriesService) {
+    // categoriesService.loadData();
+  }
 }
