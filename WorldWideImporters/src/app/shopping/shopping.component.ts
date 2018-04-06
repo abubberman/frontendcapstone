@@ -8,13 +8,12 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent implements OnInit {
-  subcategoryName = '';
+  subcategory: ISubCategory;
   categories: Array<ICategory> = [];
   products: Array<IProduct> = [];
 
   constructor(private categoriesService: CategoriesService) {
     categoriesService.getData().subscribe(sub => {
-      console.log('Shopping');
       this.categories = sub;
     });
   }
@@ -22,7 +21,7 @@ export class ShoppingComponent implements OnInit {
   ngOnInit() {}
 
   onSelect(subCategory: ISubCategory) {
-    this.subcategoryName = subCategory.name;
+    this.subcategory = subCategory;
     this.products = subCategory.items;
   }
 }
