@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'product:id', component: ProductComponent },
+  { path: 'product/:id', component: ProductComponent },
   { path: 'cart', component: ShoppingcartComponent },
   { path: 'shopping', component: ShoppingComponent },
   { path: '**', component: NotFoundComponent }
