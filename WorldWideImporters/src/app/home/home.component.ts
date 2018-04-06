@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { CategoriesService } from '../categories.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +11,7 @@ export class HomeComponent implements OnInit {
   featuredProducts: Array<IProduct>;
 
   constructor(
-    private categoriesService: CategoriesService,
-    private router: Router
+    private categoriesService: CategoriesService
   ) {
     this.categoriesService.getData().subscribe(sub => {
       const firstFeaturedItem = sub[0].subcategories[0].items[1];
@@ -31,7 +29,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  openProductDetail(product: IProduct) {
-    this.router.navigate(['/product', product.name]);
-  }
 }

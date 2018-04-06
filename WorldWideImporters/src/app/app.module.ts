@@ -13,11 +13,14 @@ import { ContactComponent } from './contact/contact.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
   { path: 'cart', component: ShoppingcartComponent },
   { path: 'shopping', component: ShoppingComponent },
   { path: '**', component: NotFoundComponent }
@@ -33,14 +36,14 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ShoppingComponent
+    ShoppingComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
+    RouterModule.forRoot(appRoutes),
+    BarRatingModule
   ],
   providers: [CategoriesService],
   bootstrap: [AppComponent]

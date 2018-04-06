@@ -337,6 +337,17 @@ amqplib@^0.5.2:
     readable-stream "1.x >=1.1.9"
     safe-buffer "^5.0.1"
 
+angular-rating@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/angular-rating/-/angular-rating-3.0.3.tgz#0c4bdef89a55e8dc0a8409b27d893b375de11545"
+  dependencies:
+    angular "^1.5.9"
+    bootstrap "^3.3.7"
+
+angular@^1.5.9:
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.9.tgz#bc812932e18909038412d594a5990f4bb66c0619"
+
 ansi-html@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
@@ -798,6 +809,10 @@ boom@5.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
   dependencies:
     hoek "4.x.x"
+
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 bootstrap@^4.0.0:
   version "4.0.0"
@@ -4284,6 +4299,10 @@ netmask@~1.0.4:
 next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+
+ngx-bar-rating@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-bar-rating/-/ngx-bar-rating-1.1.0.tgz#47a260812b47bc6df157e0aaecae5b29249407c4"
 
 no-case@^2.2.0:
   version "2.3.2"
