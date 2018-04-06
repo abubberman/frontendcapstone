@@ -10,20 +10,17 @@ import { Subscription } from 'rxjs/Subscription';
 export class ShoppingComponent implements OnInit {
   categories: Array<ICategory>;
   products: Array<IProduct>;
-  subscription: Subscription;
 
   constructor(private categoriesService: CategoriesService) {
-    this.subscription = this.categoriesService.getData().subscribe(sub => {
+    categoriesService.getData().subscribe(sub => {
+      console.log('Shopping');
       this.categories = sub;
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onSelect(products: Array<IProduct>) {
     this.products = products;
   }
-
 }

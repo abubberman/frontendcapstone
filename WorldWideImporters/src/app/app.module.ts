@@ -7,7 +7,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
-import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -19,7 +18,6 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'product/:id', component: ProductComponent },
   { path: 'cart', component: ShoppingcartComponent },
   { path: 'shopping', component: ShoppingComponent },
   { path: '**', component: NotFoundComponent }
@@ -32,7 +30,6 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     ShoppingcartComponent,
-    ProductComponent,
     HomeComponent,
     AboutComponent,
     ContactComponent,

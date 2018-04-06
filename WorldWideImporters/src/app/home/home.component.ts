@@ -10,13 +10,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   featuredProducts: Array<IProduct>;
-  subscription: Subscription;
 
   constructor(
     private categoriesService: CategoriesService,
     private router: Router
   ) {
-    this.subscription = this.categoriesService.getData().subscribe(sub => {
+    this.categoriesService.getData().subscribe(sub => {
       const firstFeaturedItem = sub[0].subcategories[0].items[1];
       const secondFeaturedItem = sub[1].subcategories[1].items[1];
       const thirdFeaturedItem = sub[2].subcategories[2].items[3];
