@@ -13,12 +13,8 @@
       <div class="carousel-inner">
         <div *ngFor="let featuredProduct of featuredProducts let isFirst = first" [class.active]="isFirst" class="carousel-item">
           <a href="/product/{{featuredProduct.name}}">
-
             <img class="d-block w-100" src="{{featuredProduct.imagelink}}" alt="{{featuredProduct.name}}" >
           </a>
-
-
-
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
