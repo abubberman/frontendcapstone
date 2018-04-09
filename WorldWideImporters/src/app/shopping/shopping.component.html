@@ -1,44 +1,69 @@
-<div class="row">
-  <div class="col-6">
-    <div>Showing {{products.length}} of {{products.length}} in {{subcategory && subcategory.name}}
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-3 col-md-2">
-    <!-- <div style="overflow-y: scroll; overflow-x: hidden; height: 400px;"> -->
-    <ul class="list-group">
-      <li *ngFor="let category of categories" class="list-group-item">
-        <a class="collapsed" data-toggle="collapse" href="#{{category.category.split(' ').join('')}}"> {{category.category}}</a>
-        <ul id="{{category.category.split(' ').join('')}}" class="panel-collapse collapse ">
-          <li class="no-bullets" *ngFor="let subcategory of category.subcategories">
-            <a href="javascript:void(0)" (click)="onSelect(subcategory)">{{subcategory.name}}</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <!-- </div> -->
-  </div>
-  <div class="col-sm-9 col-10">
-    <div class="row">
-      <div class="productItem col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let product of products">
-        <div class="row">
-          <div class="col-10">
-            <a href="/product/{{product.name}}">{{product.name}}</a>
-          </div>
-          <div class="col-2">
-            {{product.price}}
-          </div>
-          <div class="imageContainer col-12">
-            <img src="{{product.imagelink}}">
-          </div>
-          <div class="col-12">
-            <button type="button" class="btn btn-primary">Add</button>
-          </div>
-        </div>
-
+<div>
+  <div class="row shoppingHeader">
+    <div class="col-xs-12 col-md-4">
+      <div>
+        <strong>Showing {{filteredProducts.length}} of {{products.length}} in {{subcategory && subcategory.name}}</strong>
       </div>
     </div>
-
+    <div class="col-xs-12  col-md-2">
+      <strong>Only in stock: </strong>
+      <input type="checkbox" disabled="{{filteredProducts.length === 0}}" (change)="filterProducts()" [(ngModel)]="showOnlyInStock" aria-label="Checkbox for following text input"
+      />
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <strong>Sort by:</strong>
+      <select disabled="{{filteredProducts.length === 0}}" (change)="filterProducts()" [(ngModel)]="sortBy" aria-label="Select for sorting by price">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <strong>Filter by price: </strong>
+      <input disabled="{{filteredProducts.length === 0}}" type="number" min="1" step="any" [(ngModel)]="priceFilter" (ngModelChange)="filterProducts()" />
+    </div>
   </div>
+  <div class="row no-gutters">
+    <div class="col-sm-3 col-md-2">
+      <!-- <div style="overflow-y: scroll; overflow-x: hidden; height: 400px;"> -->
+      <ul class="list-group">
+        <li *ngFor="let category of categories" class="list-group-item">
+          <a class="collapsed" data-toggle="collapse" href="#{{category.category.split(' ').join('')}}"> {{category.category}}</a>
+          <ul id="{{category.category.split(' ').join('')}}" class="panel-collapse collapse ">
+            <li class="no-bullets" *ngFor="let subcategory of category.subcategories">
+              <a href="javascript:void(0)" (click)="onSelect(subcategory)">{{subcategory.name}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- </div> -->
+    </div>
+    <div class="col-sm-9 col-10">
+      <div class="row productsContainer">
+        <div class="productItem col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let product of filteredProducts">
+          <div class="row productItemRow">
+            <div class="col-12" class="productName">
+              <a href="/product/{{product.name}}">{{product.name}}</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              ${{product.price}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="imageContainer col-12">
+              <img src="{{product.imagelink}}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button type="button" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

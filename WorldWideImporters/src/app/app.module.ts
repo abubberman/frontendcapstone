@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    BarRatingModule
+    BarRatingModule,
+    FormsModule
   ],
   providers: [CategoriesService],
   bootstrap: [AppComponent]
