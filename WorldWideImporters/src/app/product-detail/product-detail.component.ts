@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,9 +11,10 @@ import { Location } from '@angular/common';
 })
 export class ProductDetailComponent implements OnInit {
   product: IProduct;
-
+  quantity = 1;
   constructor(
     private categoriesService: CategoriesService,
+    private shoppingCartService: ShoppingCartService,
     private route: ActivatedRoute,
     private location: Location
   ) {
@@ -33,6 +35,9 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  addProductToCart() {
+    this.shoppingCartService.addProduct(this.product, this.quantity);
+  }
   goBack() {
     this.location.back();
   }

@@ -23,10 +23,10 @@
         </div>
         <div class="col-12">
           <strong>Qty:</strong>
-          <input type="text" value="1" />
+          <input type="text" [(ngModel)]="quantity" />
         </div>
         <div class="col-12">
-          <button type="button" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-primary" (click)="addProductToCart()">Add</button>
         </div>
       </div>
 

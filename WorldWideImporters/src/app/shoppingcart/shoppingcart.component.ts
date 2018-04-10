@@ -20,4 +20,17 @@ export class ShoppingcartComponent implements OnInit {
   removeProduct(productName: string) {
     this.shoppingCartService.removeProduct(productName);
   }
+
+  getProductTotal(product: IOrderedProduct) {
+    return (product.price * product.quantity).toFixed(2);
+  }
+  getSubTotal() {
+    let totalPrice = 0;
+
+    this.products.forEach(product => {
+      totalPrice = totalPrice + Number(product.price * product.quantity);
+    });
+
+    return totalPrice.toFixed(2);
+  }
 }

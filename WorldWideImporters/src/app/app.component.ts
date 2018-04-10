@@ -17,19 +17,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('init fired');
     this.categoriesService.loadData();
-    const x: IProduct = {
-      name: '',
-      description: '',
-      rating: '',
-      stock: '',
-      category: '',
-      subcategory: '',
-      price: 1,
-      imagelink: ''
-    };
-
-    this.shoppingCartService.addProduct(x, 1);
   }
 }

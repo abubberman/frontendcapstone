@@ -4,7 +4,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ShoppingCartService {
-
   private products = new BehaviorSubject<Array<IOrderedProduct>>([]);
 
   constructor() {}
@@ -28,22 +27,25 @@ export class ShoppingCartService {
 
       this.products.value.push(orderedProduct);
     } else {
-      existingProduct.quantity = existingProduct.quantity + quantity;
+      console.log(existingProduct.quantity);
+      console.log(quantity);
+      const newQuantity = Number(existingProduct.quantity) + Number(quantity);
+      console.log(newQuantity);
+      existingProduct.quantity = newQuantity;
+      console.log(existingProduct.quantity);
     }
     console.log(this.products);
   }
 
   removeProduct(productName: string) {
-    const existingProduct = this.products.value.find(p => name === productName);
+    const existingProduct = this.products.value.find(p => p.name === productName);
+
 
     if (existingProduct) {
-      existingProduct.quantity = existingProduct.quantity--;
+      const index = this.products.value.indexOf(existingProduct);
 
-      if (existingProduct.quantity === 0) {
-        const index = this.products.value.indexOf(existingProduct);
-
-        this.products.value.splice(index, 1);
-      }
+      this.products.value.splice(index, 1);
+      console.log(this.products);
     }
   }
 }
