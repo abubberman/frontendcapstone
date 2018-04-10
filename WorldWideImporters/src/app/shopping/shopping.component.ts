@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../categories.service';
 import { Subscription } from 'rxjs/Subscription';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-shopping',
@@ -16,7 +17,10 @@ export class ShoppingComponent implements OnInit {
   sortBy = 'name';
   priceFilter: number | null = null;
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(
+    private categoriesService: CategoriesService,
+    private shoppingCartService: ShoppingCartService
+  ) {
     categoriesService.getData().subscribe(sub => {
       this.categories = sub;
     });
@@ -36,7 +40,8 @@ export class ShoppingComponent implements OnInit {
     this.filteredProducts = this.products.filter(
       p =>
         (!this.showOnlyInStock || p.stock !== '0') &&
-        (this.priceFilter === null || p.price.toString().indexOf(this.priceFilter.toString()) > -1)
+        (this.priceFilter === null ||
+          p.price.toString().indexOf(this.priceFilter.toString()) > -1)
     );
 
     this.sortFilteredProducts();
@@ -89,5 +94,10 @@ export class ShoppingComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  addProductToCart(product: IProduct) {
+
+    this.shoppingCartService.addProduct(product, 1);
   }
 }

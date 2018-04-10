@@ -18,6 +18,7 @@ export class ProductDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(data => {
       categoriesService.getData().subscribe(categories => {
+
         categories.forEach(category => {
           category.subcategories.forEach(subCategory => {
             const foundProduct = subCategory.items.find(

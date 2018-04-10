@@ -5,14 +5,14 @@
     </h1>
     <p class="lead">The best way to shop for groceries online</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/shopping" role="button">Go Shopping</a>
+      <a class="btn btn-primary btn-lg" [routerLink]="['/shopping']" role="button">Go Shopping</a>
     </p>
   </div>
   <div class="container">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div *ngFor="let featuredProduct of featuredProducts let isFirst = first" [class.active]="isFirst" class="carousel-item">
-          <a href="/product/{{featuredProduct.name}}">
+          <a [routerLink]="['/product/', featuredProduct.name]" routerLinkActive="active-link">
             <img class="d-block w-100" src="{{featuredProduct.imagelink}}" alt="{{featuredProduct.name}}" >
           </a>
         </div>

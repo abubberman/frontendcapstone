@@ -16,6 +16,7 @@ import { HttpModule } from '@angular/http';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { FormsModule} from '@angular/forms';
+import { ShoppingCartService } from './shopping-cart.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     BarRatingModule,
     FormsModule
   ],
-  providers: [CategoriesService],
+  providers: [CategoriesService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

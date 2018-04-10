@@ -7,8 +7,8 @@
     </div>
     <div class="col-xs-12  col-md-2">
       <strong>Only in stock: </strong>
-      <input type="checkbox" disabled="{{filteredProducts.length === 0}}" (change)="filterProducts()" [(ngModel)]="showOnlyInStock" aria-label="Checkbox for following text input"
-      />
+      <input type="checkbox" disabled="{{filteredProducts.length === 0}}" (change)="filterProducts()" [(ngModel)]="showOnlyInStock"
+        aria-label="Checkbox for following text input" />
     </div>
     <div class="col-xs-12 col-md-2">
       <strong>Sort by:</strong>
@@ -20,7 +20,8 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <strong>Filter by price: </strong>
-      <input disabled="{{filteredProducts.length === 0}}" type="number" min="1" step="any" [(ngModel)]="priceFilter" (ngModelChange)="filterProducts()" />
+      <input disabled="{{filteredProducts.length === 0}}" type="number" min="1" step="any" [(ngModel)]="priceFilter" (ngModelChange)="filterProducts()"
+      />
     </div>
   </div>
   <div class="row no-gutters">
@@ -40,7 +41,8 @@
     </div>
     <div class="col-sm-9 col-10">
       <div class="row productsContainer">
-        <div class="productItem col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let product of filteredProducts">
+        <div class="productItem col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let product of filteredProducts" data-toggle="tooltip"
+          title="{{product.description}}">
           <div class="row productItemRow">
             <div class="col-12" class="productName">
               <a href="/product/{{product.name}}">{{product.name}}</a>
@@ -57,13 +59,8 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
-              <button type="button" class="btn btn-primary">Add</button>
-            </div>
+            <button type="button" class="btn btn-primary" (click)="addProductToCart(product)">Add</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-</div>

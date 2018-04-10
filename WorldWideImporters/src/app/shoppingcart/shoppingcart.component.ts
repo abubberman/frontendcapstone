@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
+  products: Array<IOrderedProduct>;
 
-  constructor() { }
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit() {
+    this.shoppingCartService.getData().subscribe(products => {
+      this.products = products;
+    });
   }
 
+  removeProduct(productName: string) {
+    this.shoppingCartService.removeProduct(productName);
+  }
 }

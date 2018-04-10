@@ -3,13 +3,18 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class CategoriesService {
-  private categoriesSubject = new Subject<Array<ICategory>>();
-  constructor(private http: Http) {}
+  private static timestamp = new Date();
+  private categoriesSubject = new BehaviorSubject<Array<ICategory>>([]);
+  constructor(private http: Http) {
+    console.log('aangeroepen');
+  }
 
   getData(): Observable<Array<ICategory>> {
+    console.log(this.categoriesSubject.asObservable());
     return this.categoriesSubject.asObservable();
   }
 
@@ -19,6 +24,7 @@ export class CategoriesService {
       .map((res: Response) => res.json())
       .subscribe((data: ICategory[]) => {
         this.categoriesSubject.next(data);
+        console.log(data);
       });
   }
 }
