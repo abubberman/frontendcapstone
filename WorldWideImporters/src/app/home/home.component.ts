@@ -10,23 +10,22 @@ import { CategoriesService } from '../categories.service';
 export class HomeComponent implements OnInit {
   featuredProducts: Array<IProduct>;
 
-  constructor(
-    private categoriesService: CategoriesService
-  ) {
+  constructor(private categoriesService: CategoriesService) {
     this.categoriesService.getData().subscribe(sub => {
-      const firstFeaturedItem = sub[0].subcategories[0].items[1];
-      const secondFeaturedItem = sub[1].subcategories[1].items[1];
-      const thirdFeaturedItem = sub[2].subcategories[2].items[3];
+      if (sub.length > 0) {
+        const firstFeaturedItem = sub[0].subcategories[0].items[1];
+        const secondFeaturedItem = sub[1].subcategories[1].items[1];
+        const thirdFeaturedItem = sub[2].subcategories[2].items[3];
 
-      this.featuredProducts = [
-        firstFeaturedItem,
-        secondFeaturedItem,
-        thirdFeaturedItem
-      ];
-      console.log(this.featuredProducts);
+        this.featuredProducts = [
+          firstFeaturedItem,
+          secondFeaturedItem,
+          thirdFeaturedItem
+        ];
+        console.log(this.featuredProducts);
+      }
     });
   }
 
   ngOnInit() {}
-
 }

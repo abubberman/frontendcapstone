@@ -10,11 +10,10 @@ export class CategoriesService {
   private static timestamp = new Date();
   private categoriesSubject = new BehaviorSubject<Array<ICategory>>([]);
   constructor(private http: Http) {
-    console.log('aangeroepen');
+    this.loadData();
   }
 
   getData(): Observable<Array<ICategory>> {
-    console.log(this.categoriesSubject.asObservable());
     return this.categoriesSubject.asObservable();
   }
 

@@ -30,7 +30,6 @@
   </div>
   <div class="row no-gutters">
     <div class="col-sm-3 col-md-2">
-      <!-- <div style="overflow-y: scroll; overflow-x: hidden; height: 400px;"> -->
       <ul class="list-group">
         <li *ngFor="let category of categories" class="list-group-item">
           <a class="collapsed" data-toggle="collapse" href="#{{category.category.split(' ').join('')}}"> {{category.category}}</a>
@@ -41,7 +40,6 @@
           </ul>
         </li>
       </ul>
-      <!-- </div> -->
     </div>
     <div class="col-sm-9 col-10">
       <div class="row productsContainer">

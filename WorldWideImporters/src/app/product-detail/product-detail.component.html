@@ -1,4 +1,4 @@
-<div class="container no-gutters">
+<div class="container">
   <h1>Product Details</h1>
   <button type="button" class="btn btn-lg btn-primary" (click)="goBack()">Back</button>
   <div *ngIf="product" class="row">
@@ -24,7 +24,7 @@
         </div>
         <div class="col-12">
           <strong>Qty:</strong>
-          <input type="text" [(ngModel)]="quantity" />
+          <input type="number" [(ngModel)]="quantity" />
         </div>
         <div class="col-12">
           <button type="button" class="btn btn-primary" (click)="addProductToCart()">Add</button>
