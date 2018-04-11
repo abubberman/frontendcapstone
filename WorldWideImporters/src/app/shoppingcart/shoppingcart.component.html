@@ -1,6 +1,7 @@
-<div class="container no-gutters">
+<div class="container">
+  <h1>Shopping cart</h1>
   <div class="row">
-    <div class="col-8">
+    <div class="col-md-12 col-lg-8">
       <table class="table">
         <thead>
           <tr>
@@ -13,35 +14,54 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products" >
+          <tr *ngFor="let product of products">
             <!-- <th scope="row">1</th> -->
-            <td class="imageContainer"><img src="{{product.imagelink}}"/></td>
+            <td class="imageContainer">
+              <img src="{{product.imagelink}}" />
+            </td>
             <td>{{product.name}}</td>
             <td>${{product.price}}</td>
-            <td><input type="number" [(ngModel)]="product.quantity"/> </td>
+            <td>
+              <input type="number" [(ngModel)]="product.quantity" /> </td>
             <td>${{getProductTotal(product)}}</td>
-            <td><button class="btn btn-error" (click)="removeProduct(product.name)">Delete</button></td>
+            <td>
+              <button class="btn btn-danger" (click)="removeProduct(product.name)">Delete</button>
+            </td>
           </tr>
 
         </tbody>
       </table>
 
     </div>
-    <div class="col-4">
+    <div class="col-md-12 col-lg-4">
       <h1>Cart Summary</h1>
       <div class="container">
         <div class="row">
-          <div class="col-4">Subtotal</div>
-          <div class="col-8">${{getSubTotal()}}</div>
+          <div class="col-6">
+            <strong>Subtotal</strong>
+          </div>
+          <div class="col-6">${{calculateSubTotal()}}</div>
         </div>
         <div class="row">
-
+          <div class="col-6">
+            <strong>Shipping fee</strong>
+          </div>
+          <div class="col-6">$10.00</div>
         </div>
         <div class="row">
-
+          <div class="col-6">
+            <strong>Tax (10%)</strong>
+          </div>
+          <div class="col-6">${{calculateTax()}}</div>
         </div>
         <div class="row">
-
+          <div class="col-6">
+            <strong>Total price</strong>
+          </div>
+          <div class="col-6">${{calculateTotal()}}</div>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary">Checkout</button>
         </div>
       </div>
     </div>

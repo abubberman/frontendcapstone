@@ -24,13 +24,33 @@ export class ShoppingcartComponent implements OnInit {
   getProductTotal(product: IOrderedProduct) {
     return (product.price * product.quantity).toFixed(2);
   }
-  getSubTotal() {
+  calculateSubTotal() {
+    let subTotalPrice = 0;
+
+    this.products.forEach(product => {
+      subTotalPrice = subTotalPrice + Number(product.price * product.quantity);
+    });
+
+    return subTotalPrice.toFixed(2);
+  }
+
+  calculateTax() {
+    let taxPrice = 0;
+
+    this.products.forEach(product => {
+      taxPrice = taxPrice + Number(product.price * product.quantity);
+    });
+
+    return (taxPrice * 0.1).toFixed(2);
+  }
+
+  calculateTotal() {
     let totalPrice = 0;
 
     this.products.forEach(product => {
       totalPrice = totalPrice + Number(product.price * product.quantity);
     });
 
-    return totalPrice.toFixed(2);
+    return ((totalPrice * 1.10) + 10).toFixed(2);
   }
 }
